@@ -9,3 +9,29 @@ body {
     margin: 0 auto;
     padding: 50px;
 }
+
+p {
+    color: #035f9c;
+    font-size: 1.3em;
+}
+hr {
+    height: 3px;
+    background-color: #035f9c;
+    width: 80%;
+}
+h1, h2, p {
+    text-align: center;
+}
+img {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+}
+#topics {
+    line-height: 1.5em;
+    margin: 0 auto;
+}
+.list {
+    list-style-type: none;
+}
+
