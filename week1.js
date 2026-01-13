@@ -16,6 +16,9 @@ const two = 2;
 let result = one * two;
 console.log(result);
 
+result = one + Number(two);
+console.log(result)
+
 let course = "CSE131"; //global scope
 if (true) {
     let student = "John";
