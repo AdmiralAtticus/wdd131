@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Palatino+Linotype,+Palatino,+Book+Antiqua,+serif&display=swap');
+
+:root {
+  --primary-dark: #1a1a2e;
+  --card-bg: #313131;
+  --accent: #5d747b;
+  --accent-hover: #58605a;
+  --text-light: #f0f4f8;
+  --health-green: #4caf7d;
+  --health-mid: #e0a94b;
+  --health-low: #c0392b;
+  --gold: #c9a84c;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', serif;
+  background: radial-gradient(ellipse at top, #1e2a3a 0%, #0d0d0d 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.card {
+  background: linear-gradient(160deg, #3a3a3a 0%, #2a2a2a 50%, #1f1f1f 100%);
+  border-radius: 16px;
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.95),
+    0 0 0 1px rgba(201,168,76,0.2),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+  width: 420px;
+  overflow: hidden;
+  position: relative;
+  animation: fadeInUp 0.7s ease both;
+}
+
+
+.image {
+  width: 100%;
+  display: block;
+  border-radius: 0;
+  object-fit: cover;
+  max-height: 460px;
+  filter: saturate(0.85) contrast(1.05);
+  transition: filter 0.4s ease;
+}
+
+.card:hover .image {
+  filter: saturate(1) contrast(1.1);
+}
+
+.badge-strip {
+  background: linear-gradient(90deg, #0d0d0d, #1a1a1a, #0d0d0d);
+  text-align: center;
+  padding: 4px 0;
+  letter-spacing: 6px;
+  font-size: 0.55em;
+  color: var(--gold);
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.name {
+  font-family: 'Cinzel Decorative', 'Palatino Linotype', serif;
+  font-size: 1.6em;
+  font-weight: 700;
+  color: var(--text-light);
+  padding: 14px 20px 14px 28px;
+  background: linear-gradient(90deg, var(--accent) 0%, #4a5e64 50%, #38484e 100%);
+  letter-spacing: 2px;
+  text-shadow: 0 2px 8px;
+  position: relative;
+}
+
+.name::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.6;
+}
+
+.stats {
+  margin: 16px 20px 8px 28px;
+  text-align: left;
+}
+
+.stats p {
+  margin: 7px 0;
+  color: var(--text-light);
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.label {
+  color: var(--gold);
+  font-weight: bold;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  min-width: 58px;
+}
+
+/* AI-assisted */
+.health-bar-wrap {
+  margin: 10px 28px 4px;
+  height: 10px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.health-bar {
+  height: 100%;
+  width: 100%;
+  background: var(--health-green);
+  border-radius: 5px;
+  transition: width 0.5s ease, background-color 0.5s ease;
+}
+
+.buttons {
+  text-align: center;
+  padding: 8px 0 4px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+button {
+  padding: 9px 22px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent), #4a5e64);
+  color: var(--text-light);
+  font-family: 'Palatino Linotype', serif;
+  font-size: 0.9em;
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}
+
+.status-msg {
+  min-height: 36px;
+  text-align: center;
+  font-size: 0.88em;
+  padding: 8px 16px 16px;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.status-msg.visible {
+  opacity: 1;
+}
+
+.status-msg.damage {
+  color: #e74c3c;
+}
+
+.status-msg.levelup {
+  color: var(--gold);
+}
+
+.status-msg.dead {
+  color: #e74c3c;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 1em;
+  letter-spacing: 1px;
+}
