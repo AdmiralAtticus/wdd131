@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Plan | Global Table</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Open+Sans&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Open Sans', Arial, sans-serif;
+            margin: 0;
+            background: #FAFAFA;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #C44536;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        main {
+            max-width: 900px;
+            margin: auto;
+            padding: 1.5rem;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: auto;
+            display: block;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
+        .color-box {
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #333;
+            color: white;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        code {
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Global Table</h1>
+    <p>Site Plan: Cultures, Cuisine, and Traditions</p>
+</header>
+
+<main>
+
+    <section>
+        <h2>1. Purpose</h2>
+        <p>
+            The purpose of this site is to educate users about world cultures through cuisine, traditions,
+            and language. It provides an engaging and interactive way to explore global diversity
+            using visually rich and structured content.
+        </p>
+    </section>
+
+    <section>
+        <h2>2. Target Audience</h2>
+        <ul>
+            <li>Students (high school to college)</li>
+            <li>Individuals interested in travel and culture</li>
+            <li>Casual users browsing engaging content</li>
+        </ul>
+        <p>
+            Users are expected to prefer mobile-friendly design, quick information, and interactive elements.
+        </p>
+    </section>
+
+    <section>
+        <h2>3. Dynamic Elements</h2>
+        <ul>
+            <li>Dynamic rendering of culture cards using JavaScript</li>
+            <li>Filtering system by country or region</li>
+            <li>Random culture generator button</li>
+            <li>Event listeners for user interaction</li>
+            <li>Conditional branching for filtering logic</li>
+            <li>Use of arrays, objects, and array methods (<code>forEach</code>, <code>filter</code>)</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>4. Logo</h2>
+        <p>
+            The logo will feature a minimalist globe combined with food elements such as a fork or chopsticks,
+            representing global cuisine. The text "Global Table" will appear beneath the icon.
+            <img src="images/global_project_logo.jpg" alt="Global Table Logo" class="logo">
+        </p>
+    </section>
+
+    <section>
+        <h2>5. Color Scheme</h2>
+
+        <div class="card">
+            <p><span class="color-box" style="background:#C44536;"></span> Primary: (Terracotta)</p>
+            <p><span class="color-box" style="background:#F5E6CA;"></span> Secondary: (Sand)</p>
+            <p><span class="color-box" style="background:#6B8E23;"></span> Accent: (Olive)</p>
+            <p><span class="color-box" style="background:#333;"></span> Dark: (Charcoal)</p>
+            <p><span class="color-box" style="background:#FAFAFA; border:1px solid #ccc;"></span> Background: (White)</p>
+        </div>
+
+    </section>
+
+    <section>
+        <h2>6. Typography</h2>
+        <ul>
+            <li><strong>Headings:</strong> Poppins</li>
+            <li><strong>Body:</strong> Open Sans</li>
+            <li><strong>Fallback:</strong> Arial, sans-serif</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>7. Content Plan</h2>
+
+        <h3>Home Page</h3>
+        <ul>
+            <li>Introduction</li>
+            <li>Featured cultures</li>
+        </ul>
+
+        <h3>Cultures Page</h3>
+        <ul>
+            <li>Images of dishes</li>
+            <li>Country name</li>
+            <li>Description</li>
+            <li>Cultural notes</li>
+            <li>Language phrases</li>
+        </ul>
+
+        <h3>About Page</h3>
+        <ul>
+            <li>Purpose of the site</li>
+            <li>Cultural importance</li>
+        </ul>
+
+        <h3>Contact Page</h3>
+        <ul>
+            <li>Name input</li>
+            <li>Message form</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>8. Wireframes</h2>
+
+        <div class="card">
+            <h3>Home Page</h3>
+            <p>
+                Header → Hero Section → Featured Cards → Footer
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Cultures Page</h3>
+            <p>
+                Header → Filter Buttons → Grid of Culture Cards → Footer
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>About Page</h3>
+            <p>
+                Header → Text Content → Footer
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Contact Page</h3>
+            <p>
+                Header → Form → Footer
+            </p>
+        </div>
+
+    </section>
+
+    <section>
+        <h2>9. Responsiveness</h2>
+        <ul>
+            <li>Mobile-first design approach</li>
+            <li>Grid layout adapts for larger screens</li>
+            <li>Flexible images and scalable typography</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>10. Accessibility</h2>
+        <ul>
+            <li>Semantic HTML structure</li>
+            <li>Alt text for images</li>
+            <li>High color contrast</li>
+            <li>Keyboard-friendly navigation</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>11. Performance</h2>
+        <ul>
+            <li>Compressed images (WebP)</li>
+            <li>Lazy loading images</li>
+            <li>Minimal JavaScript</li>
+            <li>Optimized CSS</li>
+        </ul>
+    </section>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 Global Table Project</p>
+</footer>
+
+</body>
+</html>
