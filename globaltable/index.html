@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Table — Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .hero {
+      background: linear-gradient(135deg, var(--terracotta) 0%, #9e2f22 100%);
+      color: white;
+      text-align: center;
+      padding: 5rem 1.5rem 4rem;
+    }
+
+    .hero-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 520px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero-btn {
+      background: var(--sand);
+      color: var(--terracotta-dark);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+
+    .stats-bar {
+      background: var(--sand);
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      padding: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-item { text-align: center; }
+
+    .stat-num {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--terracotta);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 600px) {
+      .stats-bar { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <span class="nav-globe">🌍</span>
+    Global Table
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="cultures.html">Cultures</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="hero">
+  <span class="hero-icon">🍜</span>
+  <h1>Explore the World's Table</h1>
+  <p>Discover cultures through cuisine, traditions, and language — one dish at a time.</p>
+  <a class="hero-btn" href="cultures.html">Explore Cultures →</a>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">4</div>
+    <div class="stat-label">Cultures</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">4</div>
+    <div class="stat-label">Regions</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">12+</div>
+    <div class="stat-label">Phrases</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">∞</div>
+    <div class="stat-label">Discoveries</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="accent-line"></div>
+  <h2 class="section-title">Featured Cultures</h2>
+  <p class="section-sub">Click any card to dive deeper into dishes, traditions, and language.</p>
+  <div class="cards-grid" id="homeCards"></div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-emoji" id="modalEmoji"></span>
+      <div class="modal-country" id="modalCountry"></div>
+      <div class="modal-region" id="modalRegion"></div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <h4>🍛 Signature Dish</h4>
+        <p id="modalDish"></p>
+      </div>
+      <div class="modal-section">
+        <h4>📖 About the Culture</h4>
+        <p id="modalDesc"></p>
+      </div>
+      <div class="modal-section">
+        <h4>🎎 Traditions &amp; Customs</h4>
+        <p id="modalTraditions"></p>
+      </div>
+      <div class="modal-section">
+        <h4>🗣️ Useful Phrases</h4>
+        <div class="phrase-grid" id="modalPhrases"></div>
+      </div>
+      <div class="modal-section">
+        <h4>🏷️ Tags</h4>
+        <div class="card-tags" id="modalTags"></div>
+      </div>
+    </div>
+    <button class="modal-close" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<footer>
+  <p>🌍 <span>Global Table</span> &mdash; &copy; 2026. Exploring the world one dish at a time.</p>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+  // To render all culture cards on the home page :)
+  document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('homeCards');
+    cultures.forEach(c => grid.appendChild(createCard(c)));
+  });
+</script>
+</body>
+</html>

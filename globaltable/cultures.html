@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Table — Cultures</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+      align-items: center;
+    }
+
+    .filter-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-right: 0.25rem;
+    }
+
+    .filter-btn {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      color: var(--charcoal);
+      padding: 5px 16px;
+      border-radius: 20px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .filter-btn:hover { border-color: var(--terracotta); color: var(--terracotta); }
+
+    .filter-btn.active {
+      background: var(--terracotta);
+      border-color: var(--terracotta);
+      color: white;
+    }
+
+    .random-btn {
+      background: var(--olive);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.4rem;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .random-btn:hover { background: var(--olive-dark); }
+
+    .search-wrap {
+      position: relative;
+      max-width: 320px;
+    }
+
+    .search-wrap input {
+      width: 100%;
+      padding: 0.55rem 0.9rem 0.55rem 2.2rem;
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.88rem;
+      outline: none;
+      transition: border-color 0.2s;
+      background: white;
+      color: var(--charcoal);
+    }
+
+    .search-wrap input:focus { border-color: var(--terracotta); }
+
+    .search-icon {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #aaa;
+      font-size: 14px;
+      pointer-events: none;
+    }
+
+    .spotlight {
+      background: white;
+      border-radius: 16px;
+      border: 2px solid var(--olive);
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .spotlight.show { display: block; }
+
+    .spotlight-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--olive);
+      margin-bottom: 0.5rem;
+    }
+
+    .spotlight-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 0.25rem;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-muted);
+      display: none;
+      grid-column: 1 / -1;
+    }
+
+    .no-results.show { display: block; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <span class="nav-globe">🌍</span>
+    Global Table
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="cultures.html" class="active">Cultures</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="section">
+  <div class="accent-line"></div>
+  <h2 class="section-title">All Cultures</h2>
+  <p class="section-sub">Filter by region, search by name, or get a random culture spotlight.</p>
+
+  <div style="display:flex; flex-wrap:wrap; gap:1rem; align-items:center; margin-bottom:1.25rem;">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Search cultures..." oninput="applyFilters()">
+    </div>
+    <button class="random-btn" onclick="showRandom()">🎲 Random Culture</button>
+  </div>
+
+  <div class="filter-bar">
+    <span class="filter-label">Region:</span>
+    <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
+    <button class="filter-btn" onclick="setFilter('East Asia', this)">East Asia</button>
+    <button class="filter-btn" onclick="setFilter('Southeast Asia', this)">Southeast Asia</button>
+    <button class="filter-btn" onclick="setFilter('Africa', this)">Africa</button>
+  </div>
+
+  <div class="spotlight" id="spotlight">
+    <div class="spotlight-label">🎲 Random Spotlight</div>
+    <div class="spotlight-name" id="spotlightName"></div>
+    <div id="spotlightDesc" style="font-size:0.9rem; color:var(--text-muted); margin-bottom:0.75rem;"></div>
+    <button class="filter-btn" onclick="document.getElementById('spotlight').classList.remove('show')">Dismiss</button>
+  </div>
+
+  <div class="cards-grid" id="culturesCards">
+    <p class="no-results" id="noResults">No cultures found. Try a different search.</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-emoji" id="modalEmoji"></span>
+      <div class="modal-country" id="modalCountry"></div>
+      <div class="modal-region" id="modalRegion"></div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <h4>🍛 Signature Dish</h4>
+        <p id="modalDish"></p>
+      </div>
+      <div class="modal-section">
+        <h4>📖 About the Culture</h4>
+        <p id="modalDesc"></p>
+      </div>
+      <div class="modal-section">
+        <h4>🎎 Traditions &amp; Customs</h4>
+        <p id="modalTraditions"></p>
+      </div>
+      <div class="modal-section">
+        <h4>🗣️ Useful Phrases</h4>
+        <div class="phrase-grid" id="modalPhrases"></div>
+      </div>
+      <div class="modal-section">
+        <h4>🏷️ Tags</h4>
+        <div class="card-tags" id="modalTags"></div>
+      </div>
+    </div>
+    <button class="modal-close" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<footer>
+  <p>🌍 <span>Global Table</span> &mdash; &copy; 2026. Exploring the world one dish at a time.</p>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+
+  let currentFilter = 'all';
+
+  function renderCards(list) {
+    const grid = document.getElementById('culturesCards');
+    const noResults = document.getElementById('noResults');
+    grid.querySelectorAll('.culture-card').forEach(el => el.remove());
+    if (list.length === 0) {
+      noResults.classList.add('show');
+    } else {
+      noResults.classList.remove('show');
+      list.forEach(c => grid.appendChild(createCard(c)));
+    }
+  }
+
+  function setFilter(region, btn) {
+    currentFilter = region;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applyFilters();
+  }
+
+  function applyFilters() {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    let list = cultures;
+    if (currentFilter !== 'all') {
+      list = list.filter(c => c.region === currentFilter);
+    }
+    if (query) {
+      list = list.filter(c =>
+        c.country.toLowerCase().includes(query) ||
+        c.dish.toLowerCase().includes(query) ||
+        c.tags.some(t => t.toLowerCase().includes(query))
+      );
+    }
+    renderCards(list);
+  }
+
+  function showRandom() {
+    const c = cultures[Math.floor(Math.random() * cultures.length)];
+    document.getElementById('spotlightName').textContent = `${c.emoji}  ${c.country}`;
+    document.getElementById('spotlightDesc').textContent = c.description;
+    const spot = document.getElementById('spotlight');
+    spot.classList.add('show');
+    spot.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => renderCards(cultures));
+</script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Table — About</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .about-hero {
+      background: var(--sand);
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+
+    .about-hero h2 {
+      font-size: 2rem;
+      color: var(--charcoal);
+      margin-bottom: 0.75rem;
+    }
+
+    .about-hero p {
+      color: var(--text-muted);
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .about-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--card-shadow);
+    }
+
+    .about-card-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .about-card h3 {
+      font-size: 1rem;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .about-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .audience-box {
+      margin-top: 2.5rem;
+      background: var(--sand);
+      border-radius: 14px;
+      padding: 2rem;
+    }
+
+    .audience-box h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .audience-box ul {
+      padding-left: 1.25rem;
+      color: var(--text-muted);
+      font-size: 0.93rem;
+      line-height: 2;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <span class="nav-globe">🌍</span>
+    Global Table
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="cultures.html">Cultures</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="about-hero">
+  <span style="font-size:3rem; display:block; margin-bottom:0.75rem;">🌐</span>
+  <h2>About Global Table</h2>
+  <p>We believe that food is one of the most powerful ways to understand another culture — its history, values, and people.</p>
+</div>
+
+<div class="section">
+  <div class="accent-line"></div>
+  <h2 class="section-title">Our Mission</h2>
+  <p class="section-sub">Global Table was created to make cultural education engaging, accessible, and delicious.</p>
+
+  <div class="about-grid">
+    <div class="about-card">
+      <span class="about-card-icon">🍽️</span>
+      <h3>Cuisine as Culture</h3>
+      <p>Every dish tells a story. From Taiwan's night markets to Morocco's spice-filled souks, food is a window into daily life.</p>
+    </div>
+    <div class="about-card">
+      <span class="about-card-icon">🗣️</span>
+      <h3>Learn the Language</h3>
+      <p>Pick up key phrases from each culture. A few words in someone's language goes a long way toward building connection.</p>
+    </div>
+    <div class="about-card">
+      <span class="about-card-icon">🎭</span>
+      <h3>Traditions Matter</h3>
+      <p>Understand the festivals, customs, and rituals that shape how people celebrate, grieve, and gather together.</p>
+    </div>
+    <div class="about-card">
+      <span class="about-card-icon">📚</span>
+      <h3>Built for Learners</h3>
+      <p>Whether you're a student, a traveler, or simply curious — Global Table is designed to make learning fun and approachable.</p>
+    </div>
+  </div>
+
+  <div class="audience-box">
+    <h3>Who is this for?</h3>
+    <ul>
+      <li>High school and college students</li>
+      <li>Travelers and adventure seekers</li>
+      <li>Casual browsers curious about the world</li>
+      <li>Educators looking for cultural resources</li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  <p>🌍 <span>Global Table</span> &mdash; &copy; 2026. Exploring the world one dish at a time.</p>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
